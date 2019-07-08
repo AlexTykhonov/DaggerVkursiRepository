@@ -15,6 +15,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class HistoryModel implements HistoryMainContract.Model {
 
+    
     Date today = new Date();
     Date yesterday;
     Date datebeforeyesterday;

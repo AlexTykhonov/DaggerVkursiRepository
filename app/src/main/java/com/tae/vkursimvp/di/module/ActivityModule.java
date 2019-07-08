@@ -1,5 +1,6 @@
 package com.tae.vkursimvp.di.module;
 
+import com.tae.vkursimvp.historypage.HistoryActivity;
 import com.tae.vkursimvp.listcurrency.MainActivity;
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
@@ -9,4 +10,7 @@ import dagger.android.ContributesAndroidInjector;
 public abstract class ActivityModule {
     @ContributesAndroidInjector
     abstract MainActivity contributeMainActivity();
+
+    @ContributesAndroidInjector
+    abstract HistoryActivity contributeHistoryActivity();
 }

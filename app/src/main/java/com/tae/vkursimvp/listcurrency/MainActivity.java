@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.tae.vkursimvp.PojoVal;
 import com.tae.vkursimvp.PostsAdapter;
 import com.tae.vkursimvp.R;
+import com.tae.vkursimvp.User;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -16,7 +17,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements ListCurrencyContract.View{
+import javax.inject.Inject;
+
+import dagger.android.support.DaggerAppCompatActivity;
+
+public class MainActivity extends DaggerAppCompatActivity implements ListCurrencyContract.View{
+
+    @Inject
+    User user;
 
     RecyclerView recyclerView;
     PostsAdapter postsAdapter;
@@ -28,6 +36,9 @@ public class MainActivity extends AppCompatActivity implements ListCurrencyContr
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        System.out.println(user+ " THIS IS USER FROM DAGGER");
+
 
         ListCurrencyContract.Presenter presenter = new MainPresenter(this);
 
