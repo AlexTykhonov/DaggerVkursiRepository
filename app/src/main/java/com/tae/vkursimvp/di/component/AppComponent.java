@@ -7,6 +7,7 @@ import com.tae.vkursimvp.di.module.ActivityModule;
 import com.tae.vkursimvp.di.module.AppModule;
 import com.tae.vkursimvp.di.module.RetrofitModule;
 import com.tae.vkursimvp.di.module.UserProvider;
+import com.tae.vkursimvp.di.module.ViewModule;
 
 import javax.inject.Singleton;
 import dagger.BindsInstance;
@@ -15,7 +16,8 @@ import dagger.android.support.AndroidSupportInjectionModule;
 
 
 @Singleton
-@Component(modules={AndroidSupportInjectionModule.class, ActivityModule.class, AppModule.class, RetrofitModule.class, UserProvider.class})
+@Component(modules={AndroidSupportInjectionModule.class, ActivityModule.class, RetrofitModule.class,
+        AppModule.class, UserProvider.class})
 public interface AppComponent {
 
     @Component.Builder

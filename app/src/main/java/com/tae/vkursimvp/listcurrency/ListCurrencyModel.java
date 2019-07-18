@@ -11,10 +11,17 @@ import io.reactivex.schedulers.Schedulers;
 
 public class ListCurrencyModel implements ListCurrencyContract.Model {
 
-   NbuInterface nbuInterface = RetrofitClient.callRetrofit().create(NbuInterface.class);
+   //@Inject
+    NbuInterface nbuInterface1;
 
-//    @Inject
-//    NbuInterface nbuInterface;
+public ListCurrencyModel ()
+{ }
+public ListCurrencyModel (NbuInterface nbuInterface)
+{
+ this.nbuInterface1 = nbuInterface;
+}
+
+    NbuInterface nbuInterface = RetrofitClient.callRetrofit().create(NbuInterface.class);
 
     @Override
     public void getCurrencyList(ListCurrencyContract.APIListener apiListener) {
@@ -22,7 +29,7 @@ public class ListCurrencyModel implements ListCurrencyContract.Model {
                 .subscribeOn(Schedulers.computation())
                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(apiListener::onSuccess, apiListener::onFailure);
-        System.out.println("____MODEL________________________________________---------------");
+        System.out.println(nbuInterface1+"____Interface from MODEL________________________________________---------------");
 
     }
 }

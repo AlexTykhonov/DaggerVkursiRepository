@@ -6,14 +6,19 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+import javax.inject.Inject;
+
 public class MainPresenter implements ListCurrencyContract.Presenter, ListCurrencyContract.APIListener {
 
     ListCurrencyContract.View mView;
+
+//    @Inject
+//    ListCurrencyContract.Model mModel1;
     ListCurrencyContract.Model mModel;
 
-    public MainPresenter(ListCurrencyContract.View view) {
+    public MainPresenter(ListCurrencyContract.View view, ListCurrencyContract.Model model) {
         this.mView = view;
-        mModel = new ListCurrencyModel();
+        this.mModel = model;
         mModel.getCurrencyList(this);
     }
 
@@ -22,6 +27,7 @@ public class MainPresenter implements ListCurrencyContract.Presenter, ListCurren
     public void onSuccess(ArrayList<PojoVal> pojoNbu) {
 
         if (pojoNbu != null ) {
+//            System.out.println(mModel1+" THIS IS MODEL#1 = = = = = = == = = = = = = = = == = = = =");
             System.out.println("&&*^&*^&*^*^^*&^*^*&^*&^^&*^**&^^&* THIS IS POJO NBU!!!!!    ---> " + pojoNbu);
             for (int i = 0; i < pojoNbu.size(); i++) {
                 if (pojoNbu.get(i).getR030() == 840) {

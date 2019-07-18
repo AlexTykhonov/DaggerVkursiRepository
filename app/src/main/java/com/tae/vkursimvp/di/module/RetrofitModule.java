@@ -2,7 +2,14 @@ package com.tae.vkursimvp.di.module;
 
 import com.tae.vkursimvp.NbuInterface;
 import com.tae.vkursimvp.RetrofitClient;
+import com.tae.vkursimvp.listcurrency.ListCurrencyContract;
+import com.tae.vkursimvp.listcurrency.ListCurrencyModel;
+import com.tae.vkursimvp.listcurrency.MainActivity;
+import com.tae.vkursimvp.listcurrency.MainPresenter;
+
 import javax.inject.Singleton;
+
+import dagger.Binds;
 import dagger.Module;
 import dagger.Provides;
 import retrofit2.Retrofit;
@@ -20,11 +27,18 @@ public class RetrofitModule {
             .baseUrl(BASE_URL).addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
             .build();
-    };
+    }
 
     @Provides
     @Singleton
     public NbuInterface getNbuInterface (Retrofit retrofit) {
         return retrofit.create(NbuInterface.class);
     }
+
+    @Provides
+    @Singleton
+    public ListCurrencyContract.Model lcmProvider(NbuInterface nbuInterface) {
+        return new ListCurrencyModel(nbuInterface);
+    }
+
 }

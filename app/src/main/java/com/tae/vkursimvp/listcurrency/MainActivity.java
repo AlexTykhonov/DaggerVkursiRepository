@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
+import com.tae.vkursimvp.NbuInterface;
 import com.tae.vkursimvp.PojoVal;
 import com.tae.vkursimvp.PostsAdapter;
 import com.tae.vkursimvp.R;
@@ -19,12 +20,15 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import dagger.Binds;
 import dagger.android.support.DaggerAppCompatActivity;
+import retrofit2.Retrofit;
 
 public class MainActivity extends DaggerAppCompatActivity implements ListCurrencyContract.View{
 
+
     @Inject
-    User user;
+    ListCurrencyContract.Presenter presenter;
 
     RecyclerView recyclerView;
     PostsAdapter postsAdapter;
@@ -36,11 +40,7 @@ public class MainActivity extends DaggerAppCompatActivity implements ListCurrenc
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        System.out.println(user+ " THIS IS USER FROM DAGGER");
-
-
-        ListCurrencyContract.Presenter presenter = new MainPresenter(this);
+        System.out.println(presenter+ " THIS IS PRESENTER FROM DAGGER");
 
         recyclerView = findViewById(R.id.recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

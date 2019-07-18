@@ -11,12 +11,8 @@ public class UserProvider {
     @Singleton
     @Provides
 public User userProvider () {
-
         User user = new User();
     return user;
 }
 
 }
-
-
-//  в даггер 211 есть модуль шеред преференсес и внедрить
